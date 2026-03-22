@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>GCU 2050 </title>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#07090f;--bg2:#0d1117;--bg3:#131929;--card:#19223a;--card2:#1e2945;
+  --b1:rgba(79,124,255,.14);--b2:rgba(79,124,255,.32);
+  --blue:#f58e07;--green:#df5b1e;--red:#ff4d6d;--amber:#ffd166;--purple:#a78bfa;--orange:#ff6b35;
+  --tx:#e2e8f0;--tx2:#7d8db0;--tx3:#3a4560
+}
+body {
+  font-family: system-ui,-apple-system,sans-serif;
+  background: var(--bg); /* fallback */
+  background-image: url('https://www.gardencity.university/wp-content/uploads/2025/11/DSC05986-2048x1152.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--tx);
+  min-height: 100vh;
+}/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;height:54px;background:rgba(7,9,15,.97);border-bottom:1px solid var(--b1);display:flex;align-items:center;gap:0;padding:0 14px;overflow-x:auto}
+nav::-webkit-scrollbar{height:0}
+.logo{font-weight:800;font-size:1.1rem;color:#ff6b35;white-space:nowrap;margin-right:10px}
+.nt{padding:6px 11px;border-radius:7px;font-size:.73rem;font-weight:500;cursor:pointer;border:none;background:none;color:#a0522d;transition:.15s;white-space:nowrap;flex-shrink:0}
+.nt:hover,.nt.on{background:var(--card);color:var(--tx)}
+/* PAGES */
+.pg{display:none;padding:64px 0 50px;min-height:100vh}
+.pg.on{display:block}
+.wrap{max-width:960px;margin:0 auto;padding:0 16px}
+/* SECTION HEAD */
+.sh{margin-bottom:24px;padding-top:8px}
+.sn{font-size:.67rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:5px}
+.st{font-weight:800;font-size:1.65rem;letter-spacing:-.025em;margin-bottom:6px;line-height:1.1}
+.sd{font-size:.84rem;color:var(--tx2);line-height:1.6}
+/* TABS */
+.tabrow{display:flex;gap:3px;background:var(--bg3);padding:4px;border-radius:9px;margin-bottom:20px;flex-wrap:wrap}
+.tb{flex:1;min-width:72px;padding:7px 8px;border-radius:6px;font-size:.72rem;font-weight:500;cursor:pointer;border:none;background:none;color:var(--tx2);transition:.14s;text-align:center;font-family:inherit}
+.tb:hover,.tb.on{background:var(--card);color:var(--tx)}
+.pn{display:none}.pn.on{display:block}
+/* CARDS */
+.card{background:var(--card);border:1px solid var(--b1);border-radius:13px;padding:16px}
+.card2{background:var(--card2);border:1px solid var(--b1);border-radius:9px;padding:11px}
+/* GRIDS */
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:13px}
+.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px}
+.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:9px}
+/* STATS */
+.stat{background:var(--card2);border:1px solid var(--b1);border-radius:9px;padding:13px}
+.snum{font-weight:800;font-size:1.5rem;line-height:1}
+.slbl{font-size:.66rem;color:var(--tx2);margin-top:4px;text-transform:uppercase;letter-spacing:.04em}
+/* BADGES */
+.bdg{display:inline-block;font-size:.67rem;padding:2px 8px;border-radius:20px;font-weight:500}
+.bg{background:rgba(6,214,160,.1);color:var(--green);border:1px solid rgba(6,214,160,.2)}
+.br{background:rgba(255,77,109,.1);color:var(--red);border:1px solid rgba(255,77,109,.2)}
+.ba{background:rgba(255,209,102,.1);color:var(--amber);border:1px solid rgba(255,209,102,.2)}
+.bb{background:rgba(79,124,255,.1);color:var(--blue);border:1px solid rgba(79,124,255,.2)}
+.bp{background:rgba(167,139,250,.1);color:var(--purple);border:1px solid rgba(167,139,250,.2)}
+/* BUTTONS */
+.btn{padding:8px 16px;border-radius:8px;font-size:.78rem;font-weight:500;cursor:pointer;border:1px solid var(--b2);background:none;color:var(--tx);transition:.14s;font-family:inherit}
+.btn:hover{background:var(--card2)}.btn:disabled{opacity:.35;cursor:not-allowed}
+.bbl{background:linear-gradient(135deg,#4f7cff,#6366f1);border:none;color:#fff}
+.bbl:hover{opacity:.88}.bgl{background:rgba(6,214,160,.1);border-color:rgba(6,214,160,.3);color:var(--green)}
+/* INPUTS */
+input,select,textarea{background:var(--bg3);border:1px solid var(--b1);border-radius:8px;padding:8px 11px;font-size:.82rem;color:var(--tx);font-family:inherit;width:100%;outline:none;transition:.14s}
+input:focus,select:focus,textarea:focus{border-color:var(--blue)}
+select option{background:var(--bg3)}
+textarea{resize:none;height:70px}
+.lbl{display:block;font-size:.72rem;color:var(--tx2);margin-bottom:4px;margin-top:9px}
+/* BARS */
+.br2{margin-bottom:9px}
+.bt{display:flex;justify-content:space-between;font-size:.74rem;color:var(--tx2);margin-bottom:4px}
+.btr{height:6px;background:var(--bg3);border-radius:3px;overflow:hidden}
+.bfl{height:100%;border-radius:3px}
+/* LIST ROWS */
+.lr{display:flex;align-items:center;justify-content:space-between;padding:9px 0;border-bottom:1px solid var(--b1)}
+.lr:last-child{border-bottom:none}
+.lt{font-size:.84rem;font-weight:500}
+.ls{font-size:.71rem;color:var(--tx2);margin-top:2px}
+/* ALERTS */
+.al{padding:9px 13px;border-radius:8px;font-size:.78rem;margin-top:7px;line-height:1.5}
+.alg{background:rgba(6,214,160,.08);border:1px solid rgba(6,214,160,.18);color:var(--green)}
+.alr{background:rgba(255,77,109,.08);border:1px solid rgba(255,77,109,.18);color:var(--red)}
+.ala{background:rgba(255,209,102,.08);border:1px solid rgba(255,209,102,.18);color:var(--amber)}
+.alb{background:rgba(79,124,255,.08);border:1px solid rgba(79,124,255,.18);color:var(--blue)}
+/* TOAST */
+#toasts{position:fixed;bottom:18px;right:18px;z-index:999;display:flex;flex-direction:column;gap:7px;pointer-events:none}
+.tst{padding:10px 15px;border-radius:9px;font-size:.8rem;font-weight:500;max-width:280px;border:1px solid;animation:tin .25s ease;pointer-events:auto}
+.tg{background:rgba(6,214,160,.1);border-color:rgba(6,214,160,.25);color:var(--green)}
+.tb2{background:rgba(79,124,255,.1);border-color:rgba(79,124,255,.25);color:var(--blue)}
+.tr{background:rgba(255,77,109,.1);border-color:rgba(255,77,109,.25);color:var(--red)}
+@keyframes tin{from{transform:translateX(110%);opacity:0}to{transform:translateX(0);opacity:1}}
+/* QUIZ OPTIONS */
+.opt{width:100%;text-align:left;padding:10px 14px;border-radius:8px;background:var(--bg3);border:1px solid var(--b1);color:var(--tx);font-size:.83rem;cursor:pointer;transition:.12s;margin-bottom:7px;font-family:inherit;display:block}
+.opt:hover:not(:disabled){border-color:var(--blue);background:rgba(79,124,255,.06)}
+.opt.ok{background:rgba(6,214,160,.1) !important;border-color:rgba(6,214,160,.35) !important;color:var(--green) !important}
+.opt.no{background:rgba(255,77,109,.1) !important;border-color:rgba(255,77,109,.35) !important;color:var(--red) !important}
+/* PROGRESS */
+.pr{margin-bottom:12px}
+.pt{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px}
+.ptr{height:4px;background:var(--bg3);border-radius:2px;overflow:hidden}
+.pfl{height:100%;border-radius:2px}
+/* SOS */
+.sosring{width:136px;height:136px;border-radius:50%;border:2px solid rgba(255,77,109,.28);display:flex;align-items:center;justify-content:center;margin:0 auto 13px;animation:sr 2.4s ease-in-out infinite}
+@keyframes sr{0%,100%{box-shadow:0 0 0 0 rgba(255,77,109,.1)}50%{box-shadow:0 0 0 10px rgba(255,77,109,.04)}}
+.sosbtn{width:108px;height:108px;border-radius:50%;background:linear-gradient(135deg,#ff4d6d,#c9184a);border:none;cursor:pointer;font-weight:800;font-size:.88rem;color:#fff;transition:.13s;font-family:inherit;letter-spacing:.04em}
+.sosbtn:active{transform:scale(.93)}
+/* WEEK DOTS */
+.wg{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.wd{text-align:center}
+.wdl{font-size:.62rem;color:var(--tx2);margin-bottom:4px}
+.wdd{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.67rem;font-weight:700;margin:0 auto}
+/* MENU */
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(168px,1fr));gap:11px}
+.mc{background:var(--card);border:1px solid var(--b1);border-radius:11px;padding:13px}
+/* MENTOR */
+.mnc{background:var(--card);border:1px solid var(--b1);border-radius:13px;padding:14px;margin-bottom:11px;transition:.18s}
+.mnc:hover{border-color:var(--b2)}
+/* COURSE */
+.csc{background:var(--card);border:1px solid var(--b1);border-radius:13px;padding:14px;margin-bottom:11px;border-top:3px solid}
+/* TAG PILL */
+.tag{font-size:.67rem;padding:2px 8px;border-radius:20px;background:var(--bg3);color:var(--tx2);border:1px solid var(--b1);display:inline-block;margin:2px}
+/* SCAN CIRCLE */
+.scr{width:120px;height:120px;border-radius:50%;border:2px solid rgba(79,124,255,.28);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;transition:.4s}
+.sci{width:92px;height:92px;border-radius:50%;background:var(--bg3);border:1px solid var(--b1);display:flex;align-items:center;justify-content:center;font-size:1.9rem;transition:.4s}
+/* RANK ROW HIGHLIGHT */
+.yourow{background:rgba(79,124,255,.06);border-radius:7px;padding:8px 6px;margin:3px -6px}
+@media (max-width:980px) {
+  .wrap { padding: 0 14px; }
+  .pg { padding-top: 60px; }
+  .sosring, .sci { width: 96px; height: 96px; }
+  .mgrid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+}
+@media (max-width:768px) {
+  nav { padding: 0 10px; }
+  .logo { font-size: 1rem; }
+  .nt { padding: 6px 10px; font-size: .68rem; }
+  .g2, .g3, .g4 { grid-template-columns: repeat(2, 1fr); }
+  .tabrow { gap: 6px; }
+  [style*="grid-template-columns:repeat(5"] { grid-template-columns: repeat(2,1fr); }
+  .hero-btns, .pg > div[style*="display:grid"] { grid-template-columns: 1fr !important; }
+}
+@media (max-width:620px) {
+  .g2, .g3, .g4 { grid-template-columns: 1fr !important; }
+  .wrap { max-width: 100%; padding: 0 12px; }
+  .pg { padding: 40px 0 30px; }
+  h1 { font-size: clamp(1.8rem, 10vw, 2.8rem); }
+  p { font-size: clamp(1.8rem, 10vw, 2.8rem); }
+  nav { height: auto; min-height: 54px; flex-wrap: wrap; align-items: flex-start; padding: 8px 12px; }
+  .nt { flex: 1 1 auto; }
+}
+@media (max-width:480px) {
+  .nav, nav { padding: 8px 10px; }
+  nav { height: auto; }
+  .logo { font-size: .95rem; }
+  .nt { font-size: .64rem; padding: 5px 8px; }
+  .g2, .g3, .g4 { grid-template-columns: 1fr; }
+  .mgrid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">GCU</div>
+  <button class="nt on" onclick="goPage('hero')">Home</button>
+  <button class="nt" onclick="goPage('canteen')">🍱 Canteen</button>
+  <button class="nt" onclick="goPage('attend')">👁 Attendance</button>
+  <button class="nt" onclick="goPage('quiz')">⚡ Quiz</button>
+  <button class="nt" onclick="goPage('griev')">🛡 Grievance</button>
+  <button class="nt" onclick="goPage('industry')">🚀 Industry</button>
+</nav>
+
+<div id="toasts"></div>
+
+<!-- ═══════ HOME ═══════ -->
+<div id="hero-pg" class="pg on">
+<div style="max-width:720px;margin:0 auto;padding:50px 16px;text-align:center">
+  <div style="display:inline-block;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:4px 14px;border-radius:20px;border:1px solid var(--b2);color:var(--tx2);margin-bottom:22px"></div>
+<h1 style="
+  font-family: 'Playfair Display', serif;
+  font-weight:800;
+  font-size:clamp(2rem,6vw,3.6rem);
+  line-height:1.08;
+  letter-spacing:-.03em;
+  margin-bottom:14px;
+  color: rgba(255,255,255,0.88);
+  text-shadow: 0 1px 2px rgba(0,0,0,0.35), 0 2px 15px rgba(0,0,0,0.4);
+">
+  Empowering Minds<br>
+  <span style="
+    background:linear-gradient(135deg,#4f7cff,#a78bfa);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text
+  "></span>
+</h1>
+
+<p style="
+  font-family: 'Dancing Script', cursive;
+  font-weight: 700;
+  font-size: clamp(2rem, 6vw, 3.6rem);
+  line-height: 1.08;
+  letter-spacing: -0.03em;
+  margin-top: 8px;
+  color: rgba(255,255,255,0.78);
+">
+  Inspiring Innovation
+</p>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);gap:10px;max-width:660px;margin:0 auto 28px">
+    <div class="card" style="cursor:pointer;text-align:center;padding:16px 6px" onclick="goPage('canteen')"><div style="font-size:1.4rem;margin-bottom:6px">🍱</div><div style="font-size:.67rem;color:var(--tx2);font-weight:500">Canteen<br>Pre-order</div></div>
+    <div class="card" style="cursor:pointer;text-align:center;padding:16px 6px" onclick="goPage('attend')"><div style="font-size:1.4rem;margin-bottom:6px">👁</div><div style="font-size:.67rem;color:var(--tx2);font-weight:500">Biometric<br>Attendance</div></div>
+    <div class="card" style="cursor:pointer;text-align:center;padding:16px 6px" onclick="goPage('quiz')"><div style="font-size:1.4rem;margin-bottom:6px">⚡</div><div style="font-size:.67rem;color:var(--tx2);font-weight:500">Session<br>Quiz</div></div>
+    <div class="card" style="cursor:pointer;text-align:center;padding:16px 6px" onclick="goPage('griev')"><div style="font-size:1.4rem;margin-bottom:6px">🛡</div><div style="font-size:.67rem;color:var(--tx2);font-weight:500">Grievance<br>&amp; SOS</div></div>
+    <div class="card" style="cursor:pointer;text-align:center;padding:16px 6px" onclick="goPage('industry')"><div style="font-size:1.4rem;margin-bottom:6px">🚀</div><div style="font-size:.67rem;color:var(--tx2);font-weight:500">Industry<br>Connect</div></div>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:10px;max-width:520px;margin:0 auto">
+    <div class="card2" style="text-align:center"><div style="font-weight:800;font-size:1.4rem;color:var(--green)">5</div><div style="font-size:.67rem;color:var(--tx2);margin-top:3px">Modules</div></div>
+    <div class="card2" style="text-align:center"><div style="font-weight:800;font-size:1.4rem;color:var(--blue)">100%</div><div style="font-size:.67rem;color:var(--tx2);margin-top:3px">Functional</div></div>
+    <div class="card2" style="text-align:center"><div style="font-weight:800;font-size:1.4rem;color:var(--amber)">Zero</div><div style="font-size:.67rem;color:var(--tx2);margin-top:3px">Queue time</div></div>
+    <div class="card2" style="text-align:center"><div style="font-weight:800;font-size:1.4rem;color:var(--red)">SOS</div><div style="font-size:.67rem;color:var(--tx2);margin-top:3px">1-tap alert</div></div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════ CANTEEN ═══════ -->
+<div id="canteen-pg" class="pg">
+<div class="wrap">
+  <div class="sh"><div class="sn" style="color:var(--orange)"></div>
+  <div class="st" style="font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-weight:900;font-size:2.2rem;color:#ff8b3a;">Canteen <span style="background:linear-gradient(135deg,#ff6b35,#ffd166);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Pre-order</span></div>
+  <div class="sd" style="font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;font-weight:700;font-size:1.45rem;color:#4a4a4a;line-height:1.9;">Order food up to 1 hour before lunch. See live stock. No queues. No food waste.</div></div>
+  <div class="tabrow" id="ctabs">
+    <button class="tb on" onclick="st('c','order')">Order Food</button>
+    <button class="tb" onclick="st('c','myorders')">My Orders</button>
+    <button class="tb" onclick="st('c','owner')">Owner Dashboard</button>
+  </div>
+  <!-- ORDER -->
+  <div id="c-order" class="pn on">
+    <div class="g4" style="margin-bottom:16px">
+      <div class="stat"><div class="snum" style="color:var(--orange)" id="mycnt">0</div><div class="slbl">My orders</div></div>
+      <div class="stat"><div class="snum" style="color:var(--green)">18</div><div class="slbl">Items available</div></div>
+      <div class="stat"><div class="snum" style="color:var(--amber)">1:00 PM</div><div class="slbl">Lunch time</div></div>
+      <div class="stat"><div class="snum" style="color:var(--green)">Free</div><div class="slbl">Pre-order fee</div></div>
+    </div>
+    <div style="display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px">
+      <button class="btn bbl" id="cf-all" onclick="flt('all')">All Items</button>
+      <button class="btn" id="cf-rice" onclick="flt('rice')">🍛 Rice</button>
+      <button class="btn" id="cf-snacks" onclick="flt('snacks')">🥞 Snacks</button>
+      <button class="btn" id="cf-drinks" onclick="flt('drinks')">🥤 Drinks</button>
+    </div>
+    <div class="mgrid" id="mgrid"></div>
+    <div id="cartbox" style="display:none;margin-top:18px" class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px">
+        <b style="font-size:.95rem">Your Cart</b>
+        <span style="font-weight:800;font-size:1.1rem;color:var(--orange)" id="ctotal">₹0</span>
+      </div>
+      <div id="clines"></div>
+      <div class="al alb" style="margin-top:8px">Pickup token sent to your mobile · Counter 2 · 1:00 PM</div>
+      <button class="btn bbl" style="width:100%;margin-top:10px" onclick="confirmOrder()">Confirm Pre-order →</button>
+    </div>
+  </div>
+  <!-- MY ORDERS -->
+  <div id="c-myorders" class="pn">
+    <div id="myordlist">
+      <div class="pr"><div class="pt"><div><div class="lt" style="font-size:1.2rem;font-weight:800;">Veg Thali + Lassi</div><div class="ls" style="font-size:1.05rem;font-weight:700;color:#4a4a4a;text-decoration:underline;">Token #T-041 · Lunch 1:00 PM · ₹60</div></div><span class="bdg bg">Ready</span></div><div class="ptr"><div class="pfl" style="width:100%;background:var(--green)"></div></div></div>
+    </div>
+    <div class="al alb" style="margin-top:12px">Pre-order closes 1 hour before each meal. SMS sent when food is ready.</div>
+  </div>
+  <!-- OWNER -->
+  <div id="c-owner" class="pn" style="background:rgba(25,34,58,0.75);padding:16px;border-radius:12px;backdrop-filter:blur(8px)">
+    <div class="g4" style="margin-bottom:16px">
+      <div class="stat"><div class="snum" style="color:var(--green);font-size:2rem;font-weight:900" id="owncnt">47</div><div class="slbl" style="font-size:0.85rem;font-weight:700">Orders today</div></div>
+      <div class="stat"><div class="snum" style="color:var(--orange);font-size:2rem;font-weight:900">₹2,835</div><div class="slbl" style="font-size:0.85rem;font-weight:700">Revenue</div></div>
+      <div class="stat"><div class="snum" style="color:var(--green);font-size:2rem;font-weight:900">12%</div><div class="slbl" style="font-size:0.85rem;font-weight:700">Less waste</div></div>
+      <div class="stat"><div class="snum" style="color:var(--red);font-size:2rem;font-weight:900">3</div><div class="slbl" style="font-size:0.85rem;font-weight:700">Low stock</div></div>
+    </div>
+    <div style="font-size:1.1rem;font-weight:800;color:var(--tx2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:12px">Live Stock Levels</div>
+    <div class="br2"><div class="bt" style="font-size:1.05rem;font-weight:800"><span>Veg Thali</span><span style="color:var(--green)">62 plates — 78%</span></div><div class="btr"><div class="bfl" style="width:78%;background:var(--green)"></div></div></div>
+    <div class="br2"><div class="bt" style="font-size:1.05rem;font-weight:800"><span>Chicken Biryani</span><span style="color:var(--amber)">8 plates — 16%</span></div><div class="btr"><div class="bfl" style="width:16%;background:var(--amber)"></div></div></div>
+    <div class="br2"><div class="bt" style="font-size:1.05rem;font-weight:800"><span>Paneer Rice</span><span style="color:var(--red)">0 plates — Sold out</span></div><div class="btr"><div class="bfl" style="width:0%;background:var(--red)"></div></div></div>
+    <div class="br2"><div class="bt" style="font-size:1.05rem;font-weight:800"><span>Curd Rice</span><span style="color:var(--green)">40 plates — 55%</span></div><div class="btr"><div class="bfl" style="width:55%;background:var(--green)"></div></div></div>
+    <div class="br2"><div class="bt" style="font-size:1.05rem;font-weight:800"><span>Masala Dosa</span><span style="color:var(--green)">55 plates — 70%</span></div><div class="btr"><div class="bfl" style="width:70%;background:var(--green)"></div></div></div>
+    <div class="br2"><div class="bt" style="font-size:1.05rem;font-weight:800"><span>Idli Sambar</span><span style="color:var(--green)">70 plates — 88%</span></div><div class="btr"><div class="bfl" style="width:88%;background:var(--green)"></div></div></div>
+    <div class="al ala">⚠ Chicken Biryani running low — 8 plates left. Consider stopping new orders.</div>
+    <button class="btn bbl" style="margin-top:11px" onclick="toast('Kitchen staff alerted via SMS!','g')">Send kitchen alert</button>
+  </div>
+</div>
+</div>
+
+<!-- ═══════ ATTENDANCE ═══════ -->
+<div id="attend-pg" class="pg">
+<div class="wrap">
+  <div class="sh"><div class="sn" style="color:var(--purple)">Module 02</div>
+  <div class="st">Biometric <span style="background:linear-gradient(135deg,#a78bfa,#4f7cff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Attendance</span></div>
+  <div class="sd" style="color:#4a4a4a;font-size:1.08rem;font-weight:700">Fingerprint + face scan marks attendance in 2 seconds. No proxy possible. Live teacher dashboard.</div></div>
+  <div class="tabrow" id="atabs">
+    <button class="tb on" onclick="st('a','scan')">Biometric Scanner</button>
+    <button class="tb" onclick="st('a','teacher')" style="opacity:.7">Teacher Dashboard</button>
+    <button class="tb" onclick="st('a','student')" style="opacity:.7">My Attendance</button>
+    <button class="tb" onclick="st('a','proxy')" style="opacity:.7">Proxy Alerts</button>
+  </div>
+  <!-- SCAN -->
+  <div id="a-scan" class="pn on">
+    <div class="g2">
+      <div class="card" style="text-align:center;padding:26px">
+        <div style="font-size:.7rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px">BECS 303.DESIGN THINKING.10.00 AM</div>
+        <div class="scr" id="scring"><div class="sci" id="scinn">👁</div></div>
+        <div style="font-weight:700;font-size:.93rem;margin-bottom:5px" id="scstat">Place finger or look at camera</div>
+        <div style="font-size:.72rem;color:var(--tx2);margin-bottom:16px" id="scsub">Fingerprint + face ID — dual verification</div>
+        <button class="btn bbl" onclick="doScan()" id="scbtn" style="padding:10px 24px">Simulate Scan</button>
+      </div>
+      <div class="card">
+        <div style="font-size:.7rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:11px">Recent Scans</div>
+        <div id="scanfeed">
+          <div class="lr"><div><div class="lt">AKSHAY V</div><div class="ls">24BECS174 .10:00 AM</div></div><span class="bdg bg">Present</span></div>
+          <div class="lr"><div><div class="lt">A NITIN</div><div class="ls">24BECS102.10:00 AM</div></div><span class="bdg bg">Present</span></div>
+          <div class="lr"><div><div class="lt">RAHUL</div><div class="ls">24BECS141· 10:12 AM</div></div><span class="bdg ba">Late</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- TEACHER -->
+  <div id="a-teacher" class="pn">
+    <div class="g4" style="margin-bottom:16px">
+      <div class="stat"><div class="snum" style="color:var(--green)" id="tp">47</div><div class="slbl">Present</div></div>
+      <div class="stat"><div class="snum" style="color:var(--red)" id="ta">11</div><div class="slbl">Absent</div></div>
+      <div class="stat"><div class="snum" style="color:var(--amber)">2</div><div class="slbl">Late</div></div>
+      <div class="stat"><div class="snum" id="tpct">78%</div><div class="slbl">Attendance %</div></div>
+    </div>
+    <div style="font-size:1.08rem;color:var(--tx);text-transform:uppercase;letter-spacing:.07em;margin-bottom:11px;font-weight:900;opacity:.85">Subject-wise This Week</div>
+    <div class="br2" style="opacity:.85"><div class="bt" style="font-size:1.12rem;font-weight:900;color:var(--tx)"><span>Data Structures</span><span style="color:var(--green);font-weight:900">91%</span></div><div class="btr"><div class="bfl" style="width:91%;background:var(--green)"></div></div></div>
+    <div class="br2" style="opacity:.85"><div class="bt" style="font-size:1.12rem;font-weight:900;color:var(--tx)"><span>Operating Systems</span><span style="color:var(--blue);font-weight:900">78%</span></div><div class="btr"><div class="bfl" style="width:78%;background:var(--blue)"></div></div></div>
+    <div class="br2" style="opacity:.85"><div class="bt" style="font-size:1.12rem;font-weight:900;color:var(--tx)"><span>Computer Networks</span><span style="color:var(--amber);font-weight:900">64%</span></div><div class="btr"><div class="bfl" style="width:64%;background:var(--amber)"></div></div></div>
+    <div class="br2" style="opacity:.85"><div class="bt" style="font-size:1.12rem;font-weight:900;color:var(--tx)"><span>DBMS</span><span style="color:var(--red);font-weight:900">55%</span></div><div class="btr"><div class="bfl" style="width:55%;background:var(--red)"></div></div></div>
+    <button class="btn bbl" style="margin-top:9px;font-size:1.08rem;font-weight:900;opacity:.85" onclick="toast('SMS sent to 11 absent students and parents!','g')">Send SMS to absent students →</button>
+  </div>
+  <!-- STUDENT -->
+  <div id="a-student" class="pn">
+    <div class="g2" style="margin-bottom:14px">
+      <div class="card" style="text-align:center;padding:22px">
+        <div style="font-weight:800;font-size:2.8rem;color:var(--green)">84%</div>
+        <div style="font-size:.78rem;color:var(--tx2);margin-top:5px">Overall · Minimum 75% required</div>
+      </div>
+      <div class="card">
+        <div style="font-size:.7rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:11px">This Week</div>
+        <div class="wg">
+          <div class="wd"><div class="wdl">Mon</div><div class="wdd" style="background:rgba(6,214,160,.12);border:1px solid rgba(6,214,160,.28);color:var(--green)">P</div></div>
+          <div class="wd"><div class="wdl">Tue</div><div class="wdd" style="background:rgba(6,214,160,.12);border:1px solid rgba(6,214,160,.28);color:var(--green)">P</div></div>
+          <div class="wd"><div class="wdl">Wed</div><div class="wdd" style="background:rgba(255,77,109,.1);border:1px solid rgba(255,77,109,.22);color:var(--red)">A</div></div>
+          <div class="wd"><div class="wdl">Thu</div><div class="wdd" style="background:rgba(255,209,102,.1);border:1px solid rgba(255,209,102,.22);color:var(--amber)">L</div></div>
+          <div class="wd"><div class="wdl">Fri</div><div class="wdd" style="background:rgba(6,214,160,.12);border:1px solid rgba(6,214,160,.28);color:var(--green)">P</div></div>
+        </div>
+      </div>
+    </div>
+    <div class="br2" style="opacity:.85"><div class="bt" style="font-size:1.12rem;font-weight:900;color:var(--tx)"><span>Data Structures</span><span style="color:var(--green);font-weight:900">91%</span></div><div class="btr"><div class="bfl" style="width:91%;background:var(--green)"></div></div></div>
+    <div class="br2" style="opacity:.85"><div class="bt" style="font-size:1.12rem;font-weight:900;color:var(--tx)"><span>Operating Systems</span><span style="color:var(--green);font-weight:900">85%</span></div><div class="btr"><div class="bfl" style="width:85%;background:var(--green)"></div></div></div>
+    <div class="br2" style="opacity:.85"><div class="bt" style="font-size:1.12rem;font-weight:900;color:var(--tx)"><span>Computer Networks</span><span style="color:var(--amber);font-weight:900">75% ⚠</span></div><div class="btr"><div class="bfl" style="width:75%;background:var(--amber)"></div></div></div>
+    <div class="al ala" style="font-size:1.02rem;font-weight:900;opacity:.85">Computer Networks at exactly 75% — attend ALL remaining classes to stay exam-eligible.</div>
+  </div>
+  <!-- PROXY -->
+  <div id="a-proxy" class="pn">
+    <div class="g2" style="margin-bottom:16px">
+      <div class="card2"><div style="font-weight:600;margin-bottom:4px">Dual biometric</div><div style="font-size:.76rem;color:var(--tx2)">Fingerprint + live face scan both required simultaneously</div></div>
+      <div class="card2"><div style="font-weight:600;margin-bottom:4px">GPS location lock</div><div style="font-size:.76rem;color:var(--tx2)">Device must be within 10 metres of classroom</div></div>
+      <div class="card2"><div style="font-weight:600;margin-bottom:4px">10-minute time window</div><div style="font-size:.76rem;color:var(--tx2)">Scan accepted only in first 10 minutes of class</div></div>
+      <div class="card2"><div style="font-weight:600;margin-bottom:4px">AI liveness check</div><div style="font-size:.76rem;color:var(--tx2)">Detects photos vs real face — blocks all spoofing attempts</div></div>
+    </div>
+    <div style="font-size:1.08rem;color:var(--tx);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px;font-weight:900;opacity:.85">Today's Fraud Alerts — 3</div>
+    <div class="lr" style="opacity:.85"><div><div class="lt" style="font-size:1.1rem;font-weight:900;color:var(--tx)">Sneha Patel — 22ME030</div><div class="ls" style="font-size:1rem;font-weight:800;color:var(--tx)">GPS mismatch — scanned from 2.3 km away</div></div><span class="bdg br" style="font-weight:900;font-size:.88rem">Proxy blocked</span></div>
+    <div class="lr" style="opacity:.85"><div><div class="lt" style="font-size:1.1rem;font-weight:900;color:var(--tx)">Karan Singh — 22CS018</div><div class="ls" style="font-size:1rem;font-weight:800;color:var(--tx)">Scan attempted 18 minutes after class started</div></div><span class="bdg ba" style="font-weight:900;font-size:.88rem">Late flag</span></div>
+    <div class="lr" style="opacity:.85"><div><div class="lt" style="font-size:1.1rem;font-weight:900;color:var(--tx)">Meera Nair — 22CS031</div><div class="ls" style="font-size:1rem;font-weight:800;color:var(--tx)">Liveness check failed — static image detected</div></div><span class="bdg br" style="font-weight:900;font-size:.88rem">Proxy blocked</span></div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════ QUIZ ═══════ -->
+<div id="quiz-pg" class="pg">
+<div class="wrap">
+  <div class="sh"><div class="sn" style="color:var(--green)">Module 03</div>
+  <div class="st">Session <span style="background:linear-gradient(135deg,#06d6a0,#4f7cff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Micro-Quiz</span></div>
+  <div class="sd">5-minute quiz after every class. Earn points. Clear doubts instantly. Climb the leaderboard.</div></div>
+  <div class="tabrow" id="qtabs">
+    <button class="tb on" onclick="st('q','take')">Take Quiz</button>
+    <button class="tb" onclick="st('q','doubts')">Clear Doubts</button>
+    <button class="tb" onclick="st('q','insights')">Teacher Insights</button>
+    <button class="tb" onclick="st('q','board')">Leaderboard</button>
+  </div>
+  <!-- TAKE -->
+  <div id="q-take" class="pn on">
+    <div class="g2">
+      <div>
+        <div class="card" id="qcard">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
+            <span class="bdg bb" id="qlbl">Question 1 / 3</span>
+            <div style="display:flex;gap:8px;align-items:center">
+              <span class="bdg bg" id="ptslbl">+0 pts</span>
+              <span style="font-weight:800;color:var(--amber);font-size:.95rem" id="qtimer">5:00</span>
+            </div>
+          </div>
+          <div style="width:48px;height:48px;border-radius:50%;border:2px solid rgba(79,124,255,.28);display:flex;align-items:center;justify-content:center;margin:0 auto 12px">
+            <span style="font-weight:800;font-size:1.1rem;color:var(--blue)" id="qnum">1</span>
+          </div>
+          <div style="font-size:.9rem;font-weight:500;text-align:center;margin-bottom:16px;line-height:1.6" id="qtext">Loading question...</div>
+          <div id="qopts"></div>
+          <div id="qfb" style="display:none" class="al"></div>
+          <div id="qpop" style="text-align:center;font-weight:700;font-size:.92rem;color:var(--green);min-height:20px;margin-top:7px"></div>
+        </div>
+        <div class="card" id="qdone" style="display:none;text-align:center;padding:24px;margin-top:14px">
+          <div style="font-size:2.2rem;margin-bottom:8px">🎉</div>
+          <div style="font-weight:800;font-size:2rem;color:var(--green)" id="fpts">+30 pts</div>
+          <div style="font-size:.82rem;color:var(--tx2);margin-top:4px" id="fdesc">Perfect! 3/3 correct</div>
+          <div class="al alb" style="margin-top:16px;text-align:left">Doubts about this topic are in the Clear Doubts tab. Come back tomorrow for the next quiz!</div>
+          <button class="btn bbl" style="margin-top:11px;width:100%" onclick="st('q','doubts')">Clear Doubts →</button>
+        </div>
+      </div>
+      <div>
+        <div class="card">
+          <div style="font-size:.7rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:11px">Weekly Score</div>
+          <div class="br2"><div class="bt"><span>Data Structures</span><span style="color:var(--green)" id="dspts">+0 pts</span></div><div class="btr"><div class="bfl" id="dsbar" style="width:5%;background:var(--green)"></div></div></div>
+          <div class="br2"><div class="bt"><span>Operating Systems</span><span style="color:var(--blue)">+20 pts</span></div><div class="btr"><div class="bfl" style="width:55%;background:var(--blue)"></div></div></div>
+          <div class="br2"><div class="bt"><span>DBMS</span><span style="color:var(--amber)">+10 pts</span></div><div class="btr"><div class="bfl" style="width:30%;background:var(--amber)"></div></div></div>
+          <div class="card2" style="margin-top:12px"><div style="font-size:.7rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.05em;margin-bottom:5px">Points system</div><div style="font-size:.76rem;color:var(--tx2);line-height:1.7">+10 pts per correct answer<br>+5 pts daily streak bonus<br>Top 3 get HOD referral letter</div></div>
+        </div>
+        <button class="btn bbl" style="width:100%;margin-top:12px" onclick="restartQuiz()">🔄 Restart Quiz</button>
+      </div>
+    </div>
+  </div>
+  <!-- DOUBTS -->
+  <div id="q-doubts" class="pn">
+    <div style="font-size:.72rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:13px">Most Asked Doubts After Today's Quiz</div>
+    <div id="dlist">
+      <div style="padding:11px 0;border-bottom:1px solid var(--b1)">
+        <div style="display:flex;justify-content:space-between;margin-bottom:5px"><div class="lt">Why is binary search O(log n) and not O(n)?</div><span class="bdg br">14 students</span></div>
+        <div style="font-size:.74rem;color:var(--blue);cursor:pointer" onclick="toggleD(this)">▸ Show AI answer</div>
+        <div class="dan" style="display:none"><div class="al alb" style="margin-top:7px">Each step halves the search space. For n=1024 items, only 10 steps needed (log₂1024=10). That's O(log n) not O(n) — steps grow with the logarithm of n, not with n itself.</div></div>
+      </div>
+      <div style="padding:11px 0;border-bottom:1px solid var(--b1)">
+        <div style="display:flex;justify-content:space-between;margin-bottom:5px"><div class="lt">What is the difference between stack and queue?</div><span class="bdg ba">9 students</span></div>
+        <div style="font-size:.74rem;color:var(--blue);cursor:pointer" onclick="toggleD(this)">▸ Show AI answer</div>
+        <div class="dan" style="display:none"><div class="al alb" style="margin-top:7px">Stack = LIFO (Last In First Out) — like a pile of plates, last placed is first removed, uses push() and pop(). Queue = FIFO (First In First Out) — like a ticket counter, first in is first served, uses enqueue() and dequeue().</div></div>
+      </div>
+      <div style="padding:11px 0">
+        <div style="display:flex;justify-content:space-between;margin-bottom:5px"><div class="lt">Can binary search work on an unsorted array?</div><span class="bdg bb">7 students</span></div>
+        <div style="font-size:.74rem;color:var(--blue);cursor:pointer" onclick="toggleD(this)">▸ Show AI answer</div>
+        <div class="dan" style="display:none"><div class="al alb" style="margin-top:7px">No — binary search requires a sorted array. It works by comparing the middle element and eliminating half the elements. On unsorted data this logic completely breaks down.</div></div>
+      </div>
+    </div>
+    <div style="margin-top:18px">
+      <div style="font-size:.72rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px">Ask Your Own Doubt</div>
+      <textarea id="dinp" placeholder="Type your doubt about today's topic..."></textarea>
+      <button class="btn bbl" style="margin-top:7px" onclick="askD()">Ask Doubt →</button>
+      <div id="drep" class="al alb" style="display:none;margin-top:9px"></div>
+    </div>
+  </div>
+  <!-- INSIGHTS -->
+  <div id="q-insights" class="pn">
+    <div class="g4" style="margin-bottom:16px">
+      <div class="stat"><div class="snum" style="color:var(--green)">54</div><div class="slbl">Attempted</div></div>
+      <div class="stat"><div class="snum">72%</div><div class="slbl">Avg score</div></div>
+      <div class="stat"><div class="snum" style="color:var(--red)">Q2</div><div class="slbl">Hardest Q</div></div>
+      <div class="stat"><div class="snum" style="color:var(--amber)">28</div><div class="slbl">Doubts raised</div></div>
+    </div>
+    <div style="font-size:.72rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:10px">Score Distribution</div>
+    <div class="br2"><div class="bt"><span>3/3 correct — 18 students</span><span style="color:var(--green)">33%</span></div><div class="btr"><div class="bfl" style="width:33%;background:var(--green)"></div></div></div>
+    <div class="br2"><div class="bt"><span>2/3 correct — 22 students</span><span style="color:var(--blue)">41%</span></div><div class="btr"><div class="bfl" style="width:41%;background:var(--blue)"></div></div></div>
+    <div class="br2"><div class="bt"><span>1/3 correct — 10 students</span><span style="color:var(--amber)">18%</span></div><div class="btr"><div class="bfl" style="width:18%;background:var(--amber)"></div></div></div>
+    <div class="br2"><div class="bt"><span>0/3 correct — 4 students</span><span style="color:var(--red)">8%</span></div><div class="btr"><div class="bfl" style="width:8%;background:var(--red)"></div></div></div>
+    <div class="al alr" style="margin-top:5px">Pointer arithmetic — 68% got Q2 wrong. Recommend revising in next class.</div>
+    <div class="al ala" style="margin-top:7px">Recursion base case — 41% confusion. A 5-minute recap is suggested.</div>
+  </div>
+  <!-- LEADERBOARD -->
+  <div id="q-board" class="pn">
+    <div class="g3" style="margin-bottom:16px">
+      <div class="stat"><div class="snum" style="color:var(--amber)" id="yrpts">340</div><div class="slbl">Your points</div></div>
+      <div class="stat"><div class="snum">#4</div><div class="slbl">Your rank</div></div>
+      <div class="stat"><div class="snum" style="color:var(--orange)">7 🔥</div><div class="slbl">Day streak</div></div>
+    </div>
+    <div class="card">
+      <div class="lr"><div style="font-weight:800;color:var(--amber);width:22px">1</div><div style="width:34px;height:34px;border-radius:50%;background:rgba(255,209,102,.12);color:var(--amber);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.77rem;margin:0 8px;flex-shrink:0">PS</div><div style="flex:1"><div class="lt">Priya Sharma</div><div class="ls">22CS042</div></div><span class="bdg ba">520 pts</span></div>
+      <div class="lr"><div style="font-weight:800;color:var(--tx2);width:22px">2</div><div style="width:34px;height:34px;border-radius:50%;background:var(--bg3);color:var(--tx2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.77rem;margin:0 8px;flex-shrink:0">RV</div><div style="flex:1"><div class="lt">Rahul Verma</div><div class="ls">22EC017</div></div><span class="bdg bb">480 pts</span></div>
+      <div class="lr"><div style="font-weight:800;color:var(--tx2);width:22px">3</div><div style="width:34px;height:34px;border-radius:50%;background:var(--bg3);color:var(--tx2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.77rem;margin:0 8px;flex-shrink:0">SP</div><div style="flex:1"><div class="lt">Sneha Patel</div><div class="ls">22ME030</div></div><span class="bdg bb">410 pts</span></div>
+      <div class="lr yourow"><div style="font-weight:800;color:var(--blue);width:22px">4</div><div style="width:34px;height:34px;border-radius:50%;background:rgba(79,124,255,.14);color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.77rem;margin:0 8px;flex-shrink:0">AK</div><div style="flex:1"><div class="lt" style="color:var(--blue)">Aditya Kumar (You)</div><div class="ls">22CS001</div></div><span class="bdg bb" id="yrbdg">340 pts</span></div>
+      <div class="lr"><div style="font-weight:800;color:var(--tx2);width:22px">5</div><div style="width:34px;height:34px;border-radius:50%;background:var(--bg3);color:var(--tx2);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.77rem;margin:0 8px;flex-shrink:0">KS</div><div style="flex:1"><div class="lt">Karan Singh</div><div class="ls">22CS018</div></div><span class="bdg bp">290 pts</span></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════ GRIEVANCE ═══════ -->
+<div id="griev-pg" class="pg">
+<div class="wrap">
+  <div class="sh"><div class="sn" style="color:var(--red)">Module 04</div>
+  <div class="st">Grievance &amp; <span style="background:linear-gradient(135deg,#ff4d6d,#ff6b35);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">SOS</span></div>
+  <div class="sd">Report broken AC, fans, lights, dirty washrooms. One-tap SOS for medical, fire, or any emergency.</div></div>
+  <div class="tabrow" id="gtabs">
+    <button class="tb on" onclick="st('g','raise')">Raise Complaint</button>
+    <button class="tb" onclick="st('g','track')">Track Status</button>
+    <button class="tb" onclick="st('g','medid')">Medical ID</button>
+    <button class="tb" style="color:var(--red)" onclick="st('g','sos')">🆘 SOS Emergency</button>
+    <button class="tb" onclick="st('g','admin')">Admin Panel</button>
+  </div>
+  <!-- RAISE -->
+  <div id="g-raise" class="pn on">
+    <div class="g2">
+      <div class="card">
+        <label class="lbl" style="margin-top:0">Category</label>
+        <select id="gcat"><option>AC not working</option><option>Fan not working</option><option>Light not working</option><option>Washroom not cleaned</option><option>Classroom dirty</option><option>Drinking water issue</option><option>Lab equipment damaged</option><option>Internet not working</option></select>
+        <label class="lbl">Location</label>
+        <select id="gloc"><option>Block A — Room 101</option><option>Block A — Room 102</option><option>Block B — Room 201</option><option>Ground floor washroom</option><option>First floor washroom</option><option>Computer Lab 1</option><option>Library</option></select>
+        <label class="lbl">Priority</label>
+        <select id="gpri"><option>Normal</option><option>Urgent</option><option>Critical</option></select>
+        <label class="lbl">Description</label>
+        <textarea id="gdesc" placeholder="Describe the issue in detail..."></textarea>
+        <button class="btn bbl" style="width:100%;margin-top:11px" onclick="subComp()">Submit Complaint →</button>
+        <div id="gconf" class="al alg" style="display:none;margin-top:9px"></div>
+      </div>
+      <div>
+        <div class="card2" style="margin-bottom:10px">
+          <div style="font-size:.7rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:9px">Quick Report</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px">
+            <button class="btn" onclick="qfill('AC not working','Block A — Room 101')">❄️ AC Issue</button>
+            <button class="btn" onclick="qfill('Fan not working','Block A — Room 101')">💨 Fan Issue</button>
+            <button class="btn" onclick="qfill('Light not working','Block B — Room 201')">💡 Light</button>
+            <button class="btn" onclick="qfill('Washroom not cleaned','Ground floor washroom')">🚿 Washroom</button>
+          </div>
+        </div>
+        <div class="card2">
+          <div style="font-size:.7rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:9px">Today's Stats</div>
+          <div class="lr"><div class="lt">Total complaints</div><span class="bdg bb" id="gtot">12</span></div>
+          <div class="lr"><div class="lt">Resolved today</div><span class="bdg bg">7</span></div>
+          <div class="lr" style="border:none"><div class="lt">Avg resolution time</div><span class="bdg ba">2.4 hrs</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- TRACK -->
+  <div id="g-track" class="pn">
+    <div id="tlist">
+      <div class="pr"><div class="pt"><div><div class="lt">AC not working — Block A Room 101</div><div class="ls">Ticket #C-2041 · 2 hours ago · Urgent</div></div><span class="bdg ba">In Progress</span></div><div class="ptr"><div class="pfl" style="width:55%;background:var(--amber)"></div></div></div>
+      <div class="pr" style="margin-top:12px"><div class="pt"><div><div class="lt">Washroom not cleaned — Ground floor</div><div class="ls">Ticket #C-2038 · Yesterday</div></div><span class="bdg bg">Resolved</span></div><div class="ptr"><div class="pfl" style="width:100%;background:var(--green)"></div></div></div>
+      <div class="pr" style="margin-top:12px"><div class="pt"><div><div class="lt">Light not working — Block B Room 205</div><div class="ls">Ticket #C-2029 · 3 days ago</div></div><span class="bdg bg">Resolved</span></div><div class="ptr"><div class="pfl" style="width:100%;background:var(--green)"></div></div></div>
+    </div>
+  </div>
+  <!-- MEDICAL ID -->
+  <div id="g-medid" class="pn">
+    <div class="card" style="border-color:rgba(255,77,109,.22);max-width:540px">
+      <div style="font-size:.62rem;color:var(--red);text-transform:uppercase;letter-spacing:.1em;margin-bottom:9px;font-weight:700">🔴 Emergency Medical ID — Auto-shown on SOS</div>
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px">
+        <div><div style="font-weight:800;font-size:1.25rem">Aditya Kumar</div><div style="font-size:.75rem;color:var(--tx2);margin-top:3px">22CS001 · B.Tech CSE Year 3 · Age: 21</div></div>
+        <div style="text-align:center"><div style="background:linear-gradient(135deg,#ff4d6d,#c9184a);color:#fff;font-weight:800;font-size:1.2rem;padding:5px 14px;border-radius:7px">B+</div><div style="font-size:.62rem;color:var(--tx2);margin-top:3px">Blood group</div></div>
+      </div>
+      <div class="g2" style="margin-bottom:11px">
+        <div class="card2"><div style="font-size:.68rem;color:var(--tx2)">Medical condition</div><div style="font-size:.83rem;font-weight:500;margin-top:2px">Mild asthma</div></div>
+        <div class="card2"><div style="font-size:.68rem;color:var(--tx2)">Current medication</div><div style="font-size:.83rem;font-weight:500;margin-top:2px">Salbutamol inhaler</div></div>
+      </div>
+      <div style="font-size:.68rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:5px">Allergies</div>
+      <div style="display:flex;gap:5px;flex-wrap:wrap;margin-bottom:12px">
+        <span style="font-size:.7rem;padding:2px 9px;border-radius:20px;background:rgba(255,77,109,.08);color:var(--red);border:1px solid rgba(255,77,109,.18)">Penicillin</span>
+        <span style="font-size:.7rem;padding:2px 9px;border-radius:20px;background:rgba(255,209,102,.08);color:var(--amber);border:1px solid rgba(255,209,102,.18)">Dust mites</span>
+        <span style="font-size:.7rem;padding:2px 9px;border-radius:20px;background:rgba(255,209,102,.08);color:var(--amber);border:1px solid rgba(255,209,102,.18)">Peanuts</span>
+      </div>
+      <div style="font-size:.68rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:7px">Emergency Contacts</div>
+      <div class="card2" style="margin-bottom:6px"><div style="font-weight:500">Suresh Kumar (Father)</div><div style="color:var(--blue);font-size:.78rem;margin-top:2px">+91 98765 43210</div></div>
+      <div class="card2"><div style="font-weight:500">Home Address</div><div style="color:var(--tx2);font-size:.75rem;margin-top:2px">14 MG Road, Koramangala, Bengaluru — 560034</div></div>
+    </div>
+  </div>
+  <!-- SOS -->
+  <div id="g-sos" class="pn">
+    <div class="g2">
+      <div class="card" style="text-align:center;padding:26px">
+        <div style="font-size:.7rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:14px">Step 1 — Select emergency type</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-bottom:20px" id="etgrid">
+          <div class="card2" style="cursor:pointer;text-align:center;transition:.14s" onclick="setET(this,'Medical emergency')"><div style="font-size:1.3rem;margin-bottom:3px">🏥</div><div style="font-size:.67rem;color:var(--tx2)">Medical</div></div>
+          <div class="card2" style="cursor:pointer;text-align:center;transition:.14s" onclick="setET(this,'Fire emergency')"><div style="font-size:1.3rem;margin-bottom:3px">🔥</div><div style="font-size:.67rem;color:var(--tx2)">Fire</div></div>
+          <div class="card2" style="cursor:pointer;text-align:center;transition:.14s" onclick="setET(this,'Ragging / assault')"><div style="font-size:1.3rem;margin-bottom:3px">🆘</div><div style="font-size:.67rem;color:var(--tx2)">Ragging</div></div>
+          <div class="card2" style="cursor:pointer;text-align:center;transition:.14s" onclick="setET(this,'Electrical hazard')"><div style="font-size:1.3rem;margin-bottom:3px">⚡</div><div style="font-size:.67rem;color:var(--tx2)">Electrical</div></div>
+          <div class="card2" style="cursor:pointer;text-align:center;transition:.14s" onclick="setET(this,'Mental health crisis')"><div style="font-size:1.3rem;margin-bottom:3px">🧠</div><div style="font-size:.67rem;color:var(--tx2)">Mental health</div></div>
+          <div class="card2" style="cursor:pointer;text-align:center;transition:.14s" onclick="setET(this,'Other emergency')"><div style="font-size:1.3rem;margin-bottom:3px">📣</div><div style="font-size:.67rem;color:var(--tx2)">Other</div></div>
+        </div>
+        <div style="font-size:.7rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.08em;margin-bottom:13px">Step 2 — Press SOS</div>
+        <div class="sosring"><button class="sosbtn" onclick="fireSOS()" id="sosbtn">SOS</button></div>
+        <div style="font-size:.71rem;color:var(--tx2)">Sends location + Medical ID to security, nurse &amp; parents</div>
+      </div>
+      <div>
+        <div id="sosres" class="card" style="display:none">
+          <div style="font-size:.67rem;color:var(--red);text-transform:uppercase;letter-spacing:.1em;font-weight:700;margin-bottom:9px">🔴 SOS Alert Dispatched</div>
+          <div style="font-weight:700;font-size:1rem;margin-bottom:13px" id="sosetlbl">Medical emergency</div>
+          <div id="sossteps"></div>
+          <div class="al alr" style="margin-top:11px">Blood group B+ · Allergy: Penicillin · Asthma — shown to all responders</div>
+        </div>
+        <div id="sosph" class="card" style="display:flex;align-items:center;justify-content:center;padding:36px;text-align:center">
+          <div><div style="font-size:2.8rem;margin-bottom:9px">🛡</div><div style="font-size:.82rem;color:var(--tx2);line-height:1.7">Select type then press SOS.<br>All responders notified instantly.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- ADMIN -->
+  <div id="g-admin" class="pn">
+    <div class="g4" style="margin-bottom:16px">
+      <div class="stat"><div class="snum" id="adt">12</div><div class="slbl">Total today</div></div>
+      <div class="stat"><div class="snum" style="color:var(--amber)" id="adp">5</div><div class="slbl">Pending</div></div>
+      <div class="stat"><div class="snum" style="color:var(--green)" id="adr">7</div><div class="slbl">Resolved</div></div>
+      <div class="stat"><div class="snum" style="color:var(--red)" id="ads">0</div><div class="slbl">SOS alerts</div></div>
+    </div>
+    <div id="adminlist">
+      <div class="lr"><div><div class="lt">AC not working — Block A Room 101</div><div class="ls">22CS001 · 2 hrs ago · Urgent</div></div><button class="btn bgl" onclick="resItem(this)">Mark resolved</button></div>
+      <div class="lr"><div><div class="lt">Fan not working — Block B Room 205</div><div class="ls">22CS042 · 4 hrs ago · Normal</div></div><button class="btn bgl" onclick="resItem(this)">Mark resolved</button></div>
+      <div class="lr"><div><div class="lt">Drinking water — Computer Lab 1</div><div class="ls">22EC017 · 1 hr ago · Critical</div></div><button class="btn bgl" onclick="resItem(this)">Mark resolved</button></div>
+      <div class="lr"><div><div class="lt">First floor washroom not cleaned</div><div class="ls">22ME030 · 3 hrs ago · Urgent</div></div><button class="btn bgl" onclick="resItem(this)">Mark resolved</button></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- ═══════ INDUSTRY ═══════ -->
+<div id="industry-pg" class="pg">
+<div class="wrap">
+  <div class="sh"><div class="sn" style="color:var(--purple)">Module 05</div>
+  <div class="st">Industry <span style="background:linear-gradient(135deg,#a78bfa,#f72585);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">Connect</span></div>
+  <div class="sd">Connect with Infosys, IBM, X professionals weekly. Live market gap data. Personalized course recommendations.</div></div>
+  <div class="tabrow" id="itabs">
+    <button class="tb on" onclick="st('i','mentors')">Book Mentors</button>
+    <button class="tb" onclick="st('i','gap')">Market Gap</button>
+    <button class="tb" onclick="st('i','courses')">Courses</button>
+    <button class="tb" onclick="st('i','sessions')">Sessions</button>
+    <button class="tb" onclick="st('i','profile')">Career Profile</button>
+  </div>
+  <!-- MENTORS -->
+  <div id="i-mentors" class="pn on">
+    <div class="g4" style="margin-bottom:16px">
+      <div class="stat"><div class="snum" style="color:var(--blue)">12</div><div class="slbl">Mentors</div></div>
+      <div class="stat"><div class="snum" style="color:var(--green)">8</div><div class="slbl">MNCs</div></div>
+      <div class="stat"><div class="snum">Free</div><div class="slbl">Cost</div></div>
+      <div class="stat"><div class="snum">4.8 ⭐</div><div class="slbl">Avg rating</div></div>
+    </div>
+    <div id="mlist"></div>
+    <div id="mconf" class="al alg" style="display:none;margin-top:10px"></div>
+  </div>
+  <!-- GAP -->
+  <div id="i-gap" class="pn">
+    <div class="al alb" style="margin-bottom:14px">Live data from Infosys, IBM, X, Wipro hiring teams — updated every week</div>
+    <div id="gaplist"></div>
+  </div>
+  <!-- COURSES -->
+  <div id="i-courses" class="pn">
+    <div class="card2" style="margin-bottom:14px;font-size:.8rem;color:var(--tx2)">Courses recommended based on your skill gaps and what mentors specifically suggested this week.</div>
+    <div id="clist"></div>
+    <div id="cconf" class="al alg" style="display:none;margin-top:10px"></div>
+  </div>
+  <!-- SESSIONS -->
+  <div id="i-sessions" class="pn">
+    <div class="card">
+      <div class="lr"><div><div class="lt">Live Q&amp;A — Infosys hiring trends 2025</div><div class="ls">Saturday 10:00 AM · Arjun Rao · 38 registered</div></div><button class="btn bbl" onclick="toast('Google Meet link opened!','b')">Join →</button></div>
+      <div class="lr"><div><div class="lt">How I cracked IBM data science</div><div class="ls">Sunday 11:00 AM · Shalini Mehta · 52 registered</div></div><button class="btn bbl" onclick="toast('Google Meet link opened!','b')">Join →</button></div>
+      <div class="lr"><div><div class="lt">Product management at X — what college never teaches</div><div class="ls">Saturday 3:00 PM · Vikram Kumar · 29 registered</div></div><button class="btn bbl" onclick="toast('Google Meet link opened!','b')">Join →</button></div>
+      <div class="lr" style="border:none"><div><div class="lt">Resume review — what Infosys HR looks for</div><div class="ls">Last Saturday · 67 attended · 4.9 ⭐ · Recording available</div></div><button class="btn" onclick="toast('Playing recording...','b')">Watch</button></div>
+    </div>
+  </div>
+  <!-- PROFILE -->
+  <div id="i-profile" class="pn">
+    <div class="g2">
+      <div class="card" style="text-align:center;padding:22px">
+        <div style="font-weight:800;font-size:2.8rem;color:var(--amber)" id="rnum">61%</div>
+        <div style="font-weight:500;margin-bottom:3px">Career Readiness</div>
+        <div style="font-size:.74rem;color:var(--tx2);margin-bottom:12px">Complete 2 more courses to reach 80%</div>
+        <div class="btr" style="height:8px;margin-bottom:5px"><div class="bfl" id="rbar" style="width:61%;background:linear-gradient(90deg,#ffd166,#ff6b35)"></div></div>
+        <div style="font-size:.68rem;color:var(--tx2)">Target: 80% for placement shortlist</div>
+      </div>
+      <div class="card">
+        <div style="font-size:.7rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:11px">Your Skill Levels</div>
+        <div class="br2"><div class="bt"><span>DSA &amp; Algorithms</span><span style="color:var(--green)">78%</span></div><div class="btr"><div class="bfl" style="width:78%;background:var(--green)"></div></div></div>
+        <div class="br2"><div class="bt"><span>C / C++ / Java</span><span style="color:var(--green)">72%</span></div><div class="btr"><div class="bfl" style="width:72%;background:var(--green)"></div></div></div>
+        <div class="br2"><div class="bt"><span>Python</span><span style="color:var(--amber)">55%</span></div><div class="btr"><div class="bfl" style="width:55%;background:var(--amber)"></div></div></div>
+        <div class="br2"><div class="bt"><span>Cloud / AWS</span><span style="color:var(--red)">22%</span></div><div class="btr"><div class="bfl" style="width:22%;background:var(--red)"></div></div></div>
+        <div class="br2"><div class="bt"><span>AI / ML</span><span style="color:var(--red)">18%</span></div><div class="btr"><div class="bfl" style="width:18%;background:var(--red)"></div></div></div>
+      </div>
+    </div>
+    <div class="card" style="margin-top:13px">
+      <div style="font-size:.7rem;color:var(--tx2);text-transform:uppercase;letter-spacing:.07em;margin-bottom:9px">Activity Summary</div>
+      <div class="lr"><div class="lt">Sessions attended</div><span class="bdg bb">3 sessions</span></div>
+      <div class="lr"><div class="lt">Mentors connected</div><span class="bdg bb">2 professionals</span></div>
+      <div class="lr" style="border:none"><div class="lt">Courses enrolled</div><span class="bdg bb" id="elbl">1 course</span></div>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- FOOTER -->
+<div style="background:var(--bg2);border-top:1px solid var(--b1);padding:24px 16px;text-align:center;margin-top:36px">
+  <div style="font-weight:800;font-size:1.1rem;background:linear-gradient(90deg,#4f7cff,#a78bfa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:5px">GCU Portal in 2050</div>
+  <div style="font-size:.73rem;color:var(--purple);font-weight:700">Design Thinking Project 2026 · Engineering Department</div>
+  <div style="margin-top:12px">
+    <a href="http://127.0.0.1:5501/bro%20thank%20u%20.html" target="_blank" rel="noopener noreferrer" title="Open QR link" style="display:inline-block;text-decoration:none">
+      <img
+        src="https://api.qrserver.com/v1/create-qr-code/?size=140x140&data=http%3A%2F%2F127.0.0.1%3A5501%2Fbro%2520thank%2520u%2520.html"
+        alt="QR code for GCU Portal in 2050"
+        style="width:140px;height:140px;border-radius:12px;border:2px solid rgba(167,139,250,.35);background:#fff;padding:8px"
+      >
+    </a>
+  </div>
+  <div style="margin-top:10px;display:flex;justify-content:center;gap:7px;flex-wrap:wrap">
+    <span class="bdg bb">🍱 Canteen</span><span class="bdg bp">👁 Attendance</span><span class="bdg bg">⚡ Quiz</span><span class="bdg br">🛡 Grievance</span><span class="bdg ba">🚀 Industry</span>
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════
+var PAGES = ['hero','canteen','attend','quiz','griev','industry'];
+function goPage(name) {
+  document.querySelectorAll('.pg').forEach(function(p){ p.classList.remove('on'); });
+  document.getElementById(name+'-pg').classList.add('on');
+  document.querySelectorAll('.nt').forEach(function(t,i){ t.classList.toggle('on', PAGES[i]===name); });
+  window.scrollTo(0,0);
+  if(name==='quiz') { setTimeout(initQuiz, 80); }
+}
+
+// ═══════════════════════════════════════
+// TAB SWITCH
+// ═══════════════════════════════════════
+var TDEFS = {
+  c: ['order','myorders','owner'],
+  a: ['scan','teacher','student','proxy'],
+  q: ['take','doubts','insights','board'],
+  g: ['raise','track','medid','sos','admin'],
+  i: ['mentors','gap','courses','sessions','profile']
+};
+function st(p, t) {
+  TDEFS[p].forEach(function(x){
+    var el = document.getElementById(p+'-'+x);
+    if(el) el.classList.toggle('on', x===t);
+  });
+  var row = document.getElementById(p+'tabs');
+  if(row) row.querySelectorAll('.tb').forEach(function(b,i){ b.classList.toggle('on', TDEFS[p][i]===t); });
+}
+
+// ═══════════════════════════════════════
+// TOAST
+// ═══════════════════════════════════════
+function toast(msg, type) {
+  var box = document.getElementById('toasts');
+  var el = document.createElement('div');
+  el.className = 'tst ' + (type==='g'?'tg':type==='r'?'tr':'tb2');
+  el.textContent = msg;
+  box.appendChild(el);
+  setTimeout(function(){ el.style.transition='opacity .25s'; el.style.opacity='0'; setTimeout(function(){ el.remove(); },260); }, 3000);
+}
+
+// ═══════════════════════════════════════
+// MODULE 1: CANTEEN
+// ═══════════════════════════════════════
+var MENU = [
+  {n:'Veg Thali',      p:45, c:'rice',   s:'ok',    pl:62},
+  {n:'Chicken Biryani',p:70, c:'rice',   s:'low',   pl:8},
+  {n:'Paneer Rice',    p:55, c:'rice',   s:'empty', pl:0},
+  {n:'Curd Rice',      p:35, c:'rice',   s:'ok',    pl:40},
+  {n:'Masala Dosa',    p:30, c:'snacks', s:'ok',    pl:55},
+  {n:'Idli Sambar',    p:25, c:'snacks', s:'ok',    pl:70},
+  {n:'Medu Vada',      p:20, c:'snacks', s:'low',   pl:12},
+  {n:'Samosa (2pcs)',  p:20, c:'snacks', s:'ok',    pl:48},
+  {n:'Lassi',          p:25, c:'drinks', s:'ok',    pl:80},
+  {n:'Buttermilk',     p:15, c:'drinks', s:'ok',    pl:90},
+  {n:'Lime Soda',      p:20, c:'drinks', s:'ok',    pl:60},
+  {n:'Tea',            p:10, c:'drinks', s:'ok',    pl:100}
+];
+var cart = {}, cf = 'all';
+
+function flt(f) {
+  cf = f;
+  ['all','rice','snacks','drinks'].forEach(function(id){
+    var el = document.getElementById('cf-'+id);
+    if(el) el.className = (id===f) ? 'btn bbl' : 'btn';
+  });
+  buildMenu();
+}
+
+function buildMenu() {
+  var grid = document.getElementById('mgrid');
+  if(!grid) return;
+  var items = MENU.filter(function(x){ return cf==='all' || x.c===cf; });
+  var sc = {ok:'var(--green)', low:'var(--amber)', empty:'var(--red)'};
+  var html = '';
+  items.forEach(function(m) {
+    var q = cart[m.n] || 0;
+    var sl = m.s==='low' ? 'Only '+m.pl+' left' : m.s==='empty' ? 'Sold out' : 'Available';
+    html += '<div class="mc">';
+    html += '<div style="display:flex;justify-content:space-between;margin-bottom:8px">';
+    html += '<b style="font-size:1.0rem">'+m.n+'</b>';
+    html += '<span style="font-weight:900;font-size:1.05rem;color:#e07a29;text-decoration:underline">&#8377;'+m.p+'</span></div>';
+    html += '<div style="font-size:.7rem;color:'+sc[m.s]+';margin-bottom:10px">'+sl+'</div>';
+    if(m.s !== 'empty') {
+      html += '<div style="display:flex;align-items:center;gap:7px">';
+      html += '<button class="btn" style="padding:4px 11px" onclick="cq(\''+m.n+'\',-1,'+m.p+')" '+(q===0?'disabled':'')+'>&#8722;</button>';
+      html += '<span style="font-weight:800;min-width:18px;text-align:center">'+q+'</span>';
+      html += '<button class="btn bbl" style="padding:4px 11px" onclick="cq(\''+m.n+'\',1,'+m.p+')\">+</button></div>';
+    } else {
+      html += '<button class="btn" disabled style="width:100%;font-size:.76rem">Sold out</button>';
+    }
+    html += '</div>';
+  });
+  grid.innerHTML = html;
+}
+
+function cq(name, d, price) {
+  cart[name] = (cart[name]||0) + d;
+  if(cart[name] < 0) cart[name] = 0;
+  buildMenu();
+  updCart();
+}
+
+function updCart() {
+  var ents = Object.keys(cart).filter(function(k){ return cart[k]>0; });
+  var box = document.getElementById('cartbox');
+  if(!ents.length) { box.style.display='none'; return; }
+  box.style.display = 'block';
+  var tot = 0;
+  ents.forEach(function(k){ var item=MENU.find(function(x){return x.n===k;}); if(item) tot+=item.p*cart[k]; });
+  document.getElementById('ctotal').textContent = '&#8377;'+tot;
+  var lines = '';
+  ents.forEach(function(k){ var item=MENU.find(function(x){return x.n===k;}); if(item) lines+='<div style="display:flex;justify-content:space-between;font-size:.8rem;padding:3px 0;color:var(--tx2)"><span>'+k+' x'+cart[k]+'</span><span>&#8377;'+(item.p*cart[k])+'</span></div>'; });
+  document.getElementById('clines').innerHTML = lines;
+}
+
+function confirmOrder() {
+  var ents = Object.keys(cart).filter(function(k){ return cart[k]>0; });
+  if(!ents.length) { toast('Add at least one item!','r'); return; }
+  var tok = Math.floor(Math.random()*900+100);
+  var total = 0;
+  ents.forEach(function(k){ var item=MENU.find(function(x){return x.n===k;}); if(item) total+=item.p*cart[k]; });
+  var items = ents.map(function(k){ return k+(cart[k]>1?' x'+cart[k]:''); }).join(' + ');
+  toast('Order confirmed! Token #T-'+tok+' · Counter 2 · 1:00 PM', 'g');
+  var mc = document.getElementById('mycnt');
+  mc.textContent = parseInt(mc.textContent)+1;
+  var oc = document.getElementById('owncnt');
+  oc.textContent = parseInt(oc.textContent)+ents.length;
+  var ol = document.getElementById('myordlist');
+  var r = document.createElement('div'); r.className='pr'; r.style.marginBottom='11px';
+  r.innerHTML = '<div class="pt"><div><div class="lt" style="font-size:1.2rem;font-weight:800;">'+items+'</div><div class="ls" style="font-size:1.05rem;font-weight:700;color:#4a4a4a;text-decoration:underline;">Token #T-'+tok+' · Lunch 1:00 PM · &#8377;'+total+'</div></div><span class="bdg ba">Preparing</span></div><div class="ptr"><div class="pfl" style="width:12%;background:var(--amber)"></div></div>';
+  ol.insertBefore(r, ol.firstChild);
+  cart = {}; buildMenu(); updCart();
+  st('c','myorders');
+}
+
+// Build menu on page load
+buildMenu();
+
+// ═══════════════════════════════════════
+// MODULE 2: ATTENDANCE
+// ═══════════════════════════════════════
+var SNAMES = [['Divya Iyer','22CS055'],['Raj Patel','22CS033'],['Ananya Roy','22EC028'],['Vikash Kumar','22ME041'],['Preethi S','22CS067']];
+var si=0, sb=false;
+
+function doScan() {
+  if(sb) return; sb=true;
+  var btn=document.getElementById('scbtn'), ring=document.getElementById('scring');
+  var inn=document.getElementById('scinn'), stat=document.getElementById('scstat'), sub=document.getElementById('scsub');
+  btn.disabled=true; btn.textContent='Scanning...';
+  ring.style.borderColor='rgba(255,209,102,.5)';
+  inn.textContent='⏳';
+  stat.textContent='Verifying biometrics...';
+  sub.textContent='Matching fingerprint + face data';
+  setTimeout(function(){
+    var pair = SNAMES[si % SNAMES.length];
+    var nm=pair[0], rg=pair[1];
+    ring.style.borderColor='rgba(6,214,160,.5)';
+    inn.textContent='✅'; inn.style.background='rgba(6,214,160,.07)';
+    stat.textContent=nm+' — Verified!';
+    sub.textContent=rg+' · Marked present';
+    var feed = document.getElementById('scanfeed');
+    var now = new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+    var row = document.createElement('div'); row.className='lr';
+    row.innerHTML='<div><div class="lt">'+nm+'</div><div class="ls">'+rg+' · '+now+'</div></div><span class="bdg bg">Present</span>';
+    feed.insertBefore(row, feed.firstChild);
+    var tp=document.getElementById('tp'), ta=document.getElementById('ta');
+    var np=parseInt(tp.textContent)+1, na=Math.max(0,parseInt(ta.textContent)-1);
+    tp.textContent=np; ta.textContent=na;
+    document.getElementById('tpct').textContent=Math.round(np/60*100)+'%';
+    si++; toast(nm+' marked present!','g');
+    setTimeout(function(){
+      ring.style.borderColor='rgba(79,124,255,.28)';
+      inn.textContent='👁'; inn.style.background='var(--bg3)';
+      stat.textContent='Place finger or look at camera';
+      sub.textContent='Fingerprint + face ID — dual verification';
+      btn.disabled=false; btn.textContent='Simulate Scan'; sb=false;
+    },2000);
+  },1400);
+}
+
+// ═══════════════════════════════════════
+// MODULE 3: QUIZ
+// ═══════════════════════════════════════
+var QS = [
+  {q:'What is the time complexity of binary search on a sorted array?',
+   o:['O(n)','O(n²)','O(log n)','O(1)'], a:2,
+   ex:'Each step halves the search space. For 1024 items, only 10 steps needed (log₂1024=10). That gives O(log n).'},
+  {q:'Which data structure uses LIFO — Last In First Out?',
+   o:['Queue','Linked List','Stack','Array'], a:2,
+   ex:'Stack uses LIFO. Like a pile of plates — last one placed is first removed. Uses push() and pop().'},
+  {q:'What is the best-case time complexity of bubble sort?',
+   o:['O(n²)','O(n log n)','O(n)','O(log n)'], a:2,
+   ex:'With optimisation, if no swaps occur in a pass, bubble sort stops early — giving O(n) for an already-sorted array.'}
+];
+var qi=0, totpts=0, qbusy=false, qtmr=null, qsecs=300, qstarted=false;
+
+function initQuiz() {
+  if(qstarted) return;
+  qstarted=true;
+  startQuiz();
+}
+function startQuiz() {
+  qi=0; totpts=0; qbusy=false; qsecs=300;
+  clearInterval(qtmr);
+  var qcard=document.getElementById('qcard'), qdone=document.getElementById('qdone');
+  if(qcard) qcard.style.display='block';
+  if(qdone) qdone.style.display='none';
+  qtmr = setInterval(function(){
+    qsecs--;
+    var m=Math.floor(qsecs/60), s=qsecs%60;
+    var el=document.getElementById('qtimer');
+    if(el) el.textContent = m+':'+(s<10?'0':'')+s;
+    if(qsecs<=0){ clearInterval(qtmr); endQ(); }
+  },1000);
+  showQ();
+}
+function restartQuiz() { qstarted=false; startQuiz(); qstarted=true; }
+function showQ() {
+  var q=QS[qi];
+  document.getElementById('qlbl').textContent='Question '+(qi+1)+' / '+QS.length;
+  document.getElementById('qnum').textContent=qi+1;
+  document.getElementById('qtext').textContent=q.q;
+  document.getElementById('qfb').style.display='none';
+  document.getElementById('qpop').textContent='';
+  var html='';
+  q.o.forEach(function(opt,i){
+    html+='<button class="opt" onclick="ansQ(this,'+(i===q.a)+','+q.a+')">'+opt+'</button>';
+  });
+  document.getElementById('qopts').innerHTML=html;
+}
+function ansQ(btn, correct, ca) {
+  if(qbusy) return; qbusy=true;
+  document.querySelectorAll('.opt').forEach(function(b,i){ b.disabled=true; if(i===ca) b.classList.add('ok'); });
+  if(!correct) btn.classList.add('no');
+  var fb=document.getElementById('qfb'), pop=document.getElementById('qpop');
+  fb.style.display='block';
+  if(correct){
+    totpts+=10;
+    fb.className='al alg'; fb.textContent='✓ Correct! '+QS[qi].ex;
+    pop.textContent='+10 points!';
+    document.getElementById('ptslbl').textContent='+'+totpts+' pts';
+    toast('+10 points earned!','g');
+  } else {
+    fb.className='al alr'; fb.textContent='✗ Incorrect. '+QS[qi].ex;
+  }
+  setTimeout(function(){ qi++; qbusy=false; if(qi<QS.length) showQ(); else endQ(); },2200);
+}
+function endQ() {
+  clearInterval(qtmr);
+  document.getElementById('qcard').style.display='none';
+  document.getElementById('qdone').style.display='block';
+  document.getElementById('fpts').textContent='+'+totpts+' pts';
+  document.getElementById('fdesc').textContent=(totpts===30?'Perfect score! ':'Good effort! ')+Math.round(totpts/10)+'/'+QS.length+' correct';
+  var dp=document.getElementById('dspts'), db=document.getElementById('dsbar');
+  if(dp) dp.textContent='+'+totpts+' pts';
+  if(db) db.style.width=Math.min(100,totpts*3.3)+'%';
+  var yp=document.getElementById('yrpts'), yb=document.getElementById('yrbdg');
+  var np=340+totpts; if(yp) yp.textContent=np; if(yb) yb.textContent=np+' pts';
+  toast('Quiz complete! +'+totpts+' points!','g');
+}
+function toggleD(el) {
+  var a=el.nextElementSibling;
+  var sh=a.style.display==='block';
+  a.style.display=sh?'none':'block';
+  el.textContent=sh?'▸ Show AI answer':'▴ Hide answer';
+}
+var DAS = {
+  'binary':'Binary search halves the array each step — O(log n). For 1024 items only 10 steps. Requires sorted array.',
+  'stack':'Stack = LIFO. Last in, first out — like undo in a text editor. Uses push() to add and pop() to remove.',
+  'queue':'Queue = FIFO. First in, first out — like a printer queue. Uses enqueue() to add and dequeue() to remove.',
+  'array':'Arrays store elements in consecutive memory. Random access is O(1) by index. Linear search is O(n).',
+  'linked':'Linked list: nodes with data + pointer to next. O(1) insert at head. O(n) search. No random access.',
+  'hash':'Hash map uses a hash function for O(1) average lookup, insert, delete. Collisions handled by chaining.',
+  'tree':'Binary search tree: left < root < right. Search, insert, delete all O(log n) when tree is balanced.',
+  'sort':'Merge sort and quick sort are O(n log n). Bubble, selection, insertion sort are O(n²).'
+};
+function askD() {
+  var inp=document.getElementById('dinp');
+  var val=inp.value.trim();
+  if(!val){ toast('Type your doubt first!','r'); return; }
+  var rep=document.getElementById('drep');
+  rep.style.display='block'; rep.className='al alb'; rep.textContent='AI is thinking...';
+  setTimeout(function(){
+    var ans='Your doubt has been recorded. The teacher will address it in the next session.';
+    var lc=val.toLowerCase();
+    var keys=Object.keys(DAS);
+    for(var i=0;i<keys.length;i++){ if(lc.indexOf(keys[i])>=0){ ans='AI Answer: '+DAS[keys[i]]; break; } }
+    rep.textContent=ans; inp.value=''; toast('Doubt answered!','g');
+  },850);
+}
+
+// ═══════════════════════════════════════
+// MODULE 4: GRIEVANCE
+// ═══════════════════════════════════════
+var tnum=2042;
+function subComp() {
+  var cat=document.getElementById('gcat').value;
+  var loc=document.getElementById('gloc').value;
+  var pri=document.getElementById('gpri').value;
+  var conf=document.getElementById('gconf');
+  conf.style.display='block';
+  conf.textContent='✓ Ticket #C-'+tnum+' — '+cat+' at '+loc+'. Priority: '+pri+'. Staff notified.';
+  tnum++;
+  document.getElementById('gdesc').value='';
+  document.getElementById('gtot').textContent=parseInt(document.getElementById('gtot').textContent)+1;
+  document.getElementById('adt').textContent=parseInt(document.getElementById('adt').textContent)+1;
+  document.getElementById('adp').textContent=parseInt(document.getElementById('adp').textContent)+1;
+  var tl=document.getElementById('tlist');
+  var r=document.createElement('div'); r.className='pr'; r.style.marginBottom='12px';
+  r.innerHTML='<div class="pt"><div><div class="lt">'+cat+' — '+loc+'</div><div class="ls">Ticket #C-'+(tnum-1)+' · Just now · '+pri+'</div></div><span class="bdg ba">Pending</span></div><div class="ptr"><div class="pfl" style="width:4%;background:var(--amber)"></div></div>';
+  tl.insertBefore(r,tl.firstChild);
+  var al=document.getElementById('adminlist');
+  var ar=document.createElement('div'); ar.className='lr';
+  ar.innerHTML='<div><div class="lt">'+cat+' — '+loc+'</div><div class="ls">Just now · '+pri+'</div></div><button class="btn bgl" onclick="resItem(this)">Mark resolved</button>';
+  al.insertBefore(ar,al.firstChild);
+  toast('Complaint #C-'+(tnum-1)+' submitted!','g');
+  setTimeout(function(){ conf.style.display='none'; },5000);
+}
+function qfill(c,l){ document.getElementById('gcat').value=c; document.getElementById('gloc').value=l; toast('Pre-filled: '+c,'b'); }
+var etsel='Medical emergency', sosbusy=false;
+function setET(el,t) {
+  document.querySelectorAll('#etgrid .card2').forEach(function(c){ c.style.borderColor='var(--b1)'; c.style.background='var(--card2)'; });
+  el.style.borderColor='rgba(255,77,109,.38)'; el.style.background='rgba(255,77,109,.07)';
+  etsel=t; toast('Selected: '+t,'b');
+}
+function fireSOS() {
+  if(sosbusy) return; sosbusy=true;
+  var btn=document.getElementById('sosbtn');
+  btn.textContent='SENT!'; btn.style.background='linear-gradient(135deg,#c9184a,#9d0208)';
+  document.getElementById('sosph').style.display='none';
+  var res=document.getElementById('sosres'); res.style.display='block';
+  document.getElementById('sosetlbl').textContent=etsel;
+  document.getElementById('ads').textContent=parseInt(document.getElementById('ads').textContent)+1;
+  var steps=[
+    {c:'var(--green)',t:'GPS location shared — Block A, Room 101'},
+    {c:'var(--green)',t:'Medical ID card sent to college nurse'},
+    {c:'var(--green)',t:'Security guard alerted — ETA 2 minutes'},
+    {c:'var(--amber)',t:'Parents notified — +91 98765 43210'},
+    {c:'var(--amber)',t:'Ambulance dispatched — ETA 8 minutes'}
+  ];
+  var sl=document.getElementById('sossteps'); sl.innerHTML='';
+  steps.forEach(function(s,i){
+    setTimeout(function(){
+      var d=document.createElement('div');
+      d.style.cssText='display:flex;align-items:center;gap:7px;font-size:.78rem;color:var(--tx2);margin-bottom:6px';
+      d.innerHTML='<div style="width:7px;height:7px;border-radius:50%;background:'+s.c+';flex-shrink:0"></div>'+s.t;
+      sl.appendChild(d);
+    },i*550);
+  });
+  toast('🔴 SOS sent! Security + nurse + parents alerted!','r');
+  setTimeout(function(){ sosbusy=false; btn.textContent='SOS'; btn.style.background='linear-gradient(135deg,#ff4d6d,#c9184a)'; },9000);
+}
+function resItem(btn) {
+  btn.textContent='✓ Resolved'; btn.disabled=true; btn.className='btn bgl';
+  document.getElementById('adr').textContent=parseInt(document.getElementById('adr').textContent)+1;
+  document.getElementById('adp').textContent=Math.max(0,parseInt(document.getElementById('adp').textContent)-1);
+  toast('Complaint resolved — student notified!','g');
+}
+
+// ═══════════════════════════════════════
+// MODULE 5: INDUSTRY
+// ═══════════════════════════════════════
+var MENTORS = [
+  {i:'AR',n:'Arjun Rao',r:'Senior Software Engineer · 6 yrs',c:'Infosys · Bangalore',tags:['Java','Microservices','System Design','DSA'],t:'Sat 10:00 AM',bc:'rgba(79,124,255,.12)',tc:'var(--blue)',av:'Available',full:false},
+  {i:'SM',n:'Shalini Mehta',r:'Data Scientist · 4 yrs',c:'IBM · Hyderabad',tags:['Python','ML/AI','Data Pipelines','SQL'],t:'Sun 11:00 AM',bc:'rgba(6,214,160,.1)',tc:'var(--green)',av:'Available',full:false},
+  {i:'VK',n:'Vikram Kumar',r:'Product Manager · 5 yrs',c:'X (Twitter) · Remote',tags:['Product Thinking','Agile','User Research'],t:'Sat 3:00 PM',bc:'rgba(255,209,102,.1)',tc:'var(--amber)',av:'2 slots left',full:false},
+  {i:'PN',n:'Pooja Nair',r:'Cloud Architect · 7 yrs',c:'IBM · Pune',tags:['AWS','Azure','DevOps','Kubernetes'],t:'Sun 4:00 PM',bc:'rgba(167,139,250,.1)',tc:'var(--purple)',av:'Fully booked',full:true}
+];
+(function buildMentors(){
+  var html='';
+  MENTORS.forEach(function(m,idx){
+    var taghtml=m.tags.map(function(t){ return '<span class="tag">'+t+'</span>'; }).join('');
+    var avcls=m.full?'br':m.av.indexOf('2')>=0?'ba':'bg';
+    html+='<div class="mnc">';
+    html+='<div style="display:flex;align-items:center;gap:11px;margin-bottom:9px">';
+    html+='<div style="width:42px;height:42px;border-radius:50%;background:'+m.bc+';color:'+m.tc+';display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.82rem;flex-shrink:0">'+m.i+'</div>';
+    html+='<div style="flex:1"><div style="font-weight:600;font-size:.87rem">'+m.n+'</div><div style="font-size:.71rem;color:var(--tx2);margin-top:1px">'+m.r+'</div><div style="font-size:.71rem;font-weight:600;color:'+m.tc+';margin-top:1px">'+m.c+'</div></div>';
+    html+='<span class="bdg '+avcls+'">'+m.av+'</span></div>';
+    html+='<div style="margin-bottom:9px">'+taghtml+'</div>';
+    html+='<div style="display:flex;justify-content:space-between;align-items:center">';
+    html+='<span style="font-size:.73rem;color:var(--tx2)">'+m.t+' · 45 min</span>';
+    html+='<button class="btn '+(m.full?'':'bbl')+'" '+(m.full?'disabled':'')+' id="mb'+idx+'" onclick="bkM('+idx+',\''+m.n+'\',\''+m.t+'\')">'+( m.full?'Fully Booked':'Book Slot')+'</button>';
+    html+='</div></div>';
+  });
+  document.getElementById('mlist').innerHTML=html;
+})();
+function bkM(i,n,t){
+  var btn=document.getElementById('mb'+i);
+  btn.textContent='Booked ✓'; btn.disabled=true; btn.className='btn bgl';
+  var conf=document.getElementById('mconf');
+  conf.style.display='block';
+  conf.textContent='Slot booked with '+n+' for '+t+'! Google Meet link sent 30 min before session.';
+  updR(5); toast('Session booked with '+n+'!','g');
+  setTimeout(function(){ conf.style.display='none'; },5000);
+}
+
+var GAPS = [
+  {s:'Generative AI & LLMs',j:'12,400 open jobs · Infosys, IBM, TCS',d:94,a:18,v:'r'},
+  {s:'Cloud Computing — AWS/Azure',j:'9,800 open jobs · IBM, Wipro, Accenture',d:88,a:22,v:'r'},
+  {s:'System Design & Architecture',j:'7,200 open jobs · All major MNCs',d:76,a:41,v:'a'},
+  {s:'DevOps & CI/CD',j:'5,400 open jobs · Startups + MNCs',d:72,a:28,v:'a'},
+  {s:'DSA & Competitive Coding',j:'Required in all product companies',d:82,a:68,v:'g'}
+];
+(function buildGaps(){
+  var vc={r:'var(--red)',a:'var(--amber)',g:'var(--green)'};
+  var lbl={r:'Critical gap',a:'Medium gap',g:'Low gap'};
+  var html='';
+  GAPS.forEach(function(g){
+    html+='<div class="card" style="margin-bottom:11px">';
+    html+='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:11px">';
+    html+='<div><div style="font-weight:600;font-size:.87rem">'+g.s+'</div><div style="font-size:.71rem;color:var(--tx2);margin-top:2px">'+g.j+'</div></div>';
+    html+='<span class="bdg b'+g.v+'" style="flex-shrink:0;margin-left:9px">'+lbl[g.v]+'</span></div>';
+    html+='<div class="br2"><div class="bt"><span style="color:var(--green)">Industry demand</span><span style="color:var(--green)">'+g.d+'%</span></div><div class="btr"><div class="bfl" style="width:'+g.d+'%;background:var(--green)"></div></div></div>';
+    html+='<div class="br2"><div class="bt"><span style="color:'+vc[g.v]+'">Your class average</span><span style="color:'+vc[g.v]+'">'+g.a+'%</span></div><div class="btr"><div class="bfl" style="width:'+g.a+'%;background:'+vc[g.v]+'"></div></div></div>';
+    html+='<div style="font-weight:800;font-size:1.1rem;margin-top:5px;color:'+vc[g.v]+'">Gap: '+(g.d-g.a)+'%</div></div>';
+  });
+  document.getElementById('gaplist').innerHTML=html;
+})();
+
+var COURSES = [
+  {t:'Generative AI with Python — from scratch',b:'Recommended by Shalini Mehta · IBM',m:98,d:'8 weeks',cost:'Free — NPTEL',ce:'Certificate',v:'r',col:'var(--blue)',desc:'Covers prompt engineering, LLM APIs, fine-tuning — exactly what Infosys and IBM are hiring for right now.'},
+  {t:'AWS Cloud Practitioner — certified',b:'Recommended by Pooja Nair · IBM Cloud',m:95,d:'6 weeks',cost:'AWS free tier',ce:'Industry cert',v:'r',col:'var(--green)',desc:'AWS certification in 88% of cloud job listings. Opens Rs.8–14 LPA roles.'},
+  {t:'System Design — beginner to advanced',b:'Recommended by Arjun Rao · Infosys',m:82,d:'10 weeks',cost:'YouTube free',ce:'Interview prep',v:'a',col:'var(--amber)',desc:'Asked in every senior engineer interview at Infosys, X, and Google. Essential for placement prep.'}
+];
+var enrolled=1;
+(function buildCourses(){
+  var html='';
+  COURSES.forEach(function(c,i){
+    html+='<div class="csc" style="border-top-color:'+c.col+'">';
+    html+='<div style="display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:5px">';
+    html+='<div style="flex:1;padding-right:9px"><div style="font-weight:600;font-size:.86rem">'+c.t+'</div><div style="font-size:.71rem;color:var(--tx2);margin-top:2px">'+c.b+'</div></div>';
+    html+='<div style="font-weight:800;color:'+(c.v==='r'?'var(--green)':'var(--amber)')+';font-size:.87rem;flex-shrink:0">'+c.m+'% match</div></div>';
+    html+='<div style="margin-bottom:7px"><span class="tag">'+c.d+'</span><span class="tag">'+c.cost+'</span><span class="tag">'+c.ce+'</span> <span class="bdg b'+c.v+'">'+(c.v==='r'?'Critical gap':'Medium gap')+'</span></div>';
+    html+='<div style="font-size:.76rem;color:var(--tx2);margin-bottom:9px;line-height:1.5">'+c.desc+'</div>';
+    html+='<button class="btn bgl" style="width:100%" id="cbtn'+i+'" onclick="enroll('+i+',\''+c.t.substring(0,28)+'\')">Enroll now &#8594;</button></div>';
+  });
+  document.getElementById('clist').innerHTML=html;
+})();
+function enroll(i,name){
+  var btn=document.getElementById('cbtn'+i);
+  btn.textContent='Enrolled ✓'; btn.disabled=true;
+  enrolled++; document.getElementById('elbl').textContent=enrolled+' courses';
+  updR(12);
+  var conf=document.getElementById('cconf');
+  conf.style.display='block';
+  conf.textContent='Enrolled in "'+name+'..."! Added to learning plan. Career readiness improved!';
+  toast('Enrolled! Career readiness improved!','g');
+  setTimeout(function(){ conf.style.display='none'; },5000);
+}
+function updR(add){
+  var r=document.getElementById('rnum'), b=document.getElementById('rbar');
+  if(!r||!b) return;
+  var nv=Math.min(96,parseInt(r.textContent)+add);
+  r.textContent=nv+'%'; b.style.width=nv+'%';
+}
+</script>
+</body>
+</html>
